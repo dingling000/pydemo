@@ -6,11 +6,12 @@ from access import accessToken
 def create_app():
     app = Flask(__name__)
 
-    #简单的测试接口，返回200和hello信息。
+    #简单的测试接口，返回200和hello信息。接口
     @app.route("/hello", methods=["GET"])
     def hello():
         a = 1 / 1
         ret = jsonify({'statusCode': 200, 'msg': 'hello'})
+
         return ret
 
     #调用百度翻译接口。
@@ -48,7 +49,7 @@ def create_app():
         
         file = request.files['image'] #参数：上传的图片
         from_lang = request.form['from']#参数：原语言
-        to_lang = request.form['to']#参数：译语言
+        to_lang = request.json['to']#参数：译语言
         
         payload = {'from': from_lang, 'to': to_lang, 'v': '3', 'paste': '0'}
         image = {'image': (file.filename, file.stream, "multipart/form-data")}
