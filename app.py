@@ -50,7 +50,7 @@ def create_app():
         
         file = request.files['image'] #参数：上传的图片
         from_lang = request.form['from']#参数：原语言
-        to_lang = request.form['to']#参数：译语言
+        to_lang = request.json['to']#参数：译语言
         
         payload = {'from': from_lang, 'to': to_lang, 'v': '3', 'paste': '0'}
         image = {'image': (file.filename, file.stream, "multipart/form-data")}
