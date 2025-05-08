@@ -10,6 +10,7 @@ def create_app():
     @app.route("/hello", methods=["GET"])
     def hello():
         a = 1 / 1
+        b=1
         ret = jsonify({'statusCode': 200, 'msg': 'hello'})
 
         return ret
